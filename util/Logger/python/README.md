@@ -1,4 +1,4 @@
-# Sample code of Logger
+# ロガーのサンプルコード
 
 ## 利用したデザインパターン
 - Singleton pattern  
