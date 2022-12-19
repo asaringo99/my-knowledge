@@ -1,0 +1,77 @@
+
+------------ START LOGGER [2022-12-19 21:43:49] ------------
+
+------------ START LOGGER [2022-12-19 21:44:27] ------------
+2022-12-19 21:44:27.921 [INFO]	sample.py - main:17 -> main: START
+2022-12-19 21:44:27.921 [INFO]	sample.py - roop:13 -> roop: START
+2022-12-19 21:44:27.922 [INFO]	sample.py - roop:13 -> roop: END(process time : 0)
+2022-12-19 21:44:27.922 [WARNING]	sample.py - main:14 -> END ---> func: roop
+2022-12-19 21:44:27.922 [INFO]	sample.py - main:17 -> main: END(process time : 0)
+
+------------ START LOGGER [2022-12-19 21:44:52] ------------
+2022-12-19 21:44:52.688 [INFO]	sample.py - main:17 -> main: START
+2022-12-19 21:44:52.688 [INFO]	sample.py - roop:13 -> roop: START
+2022-12-19 21:44:52.689 [INFO]	sample.py - roop:13 -> roop: END(process time :   0)
+2022-12-19 21:44:52.689 [WARNING]	sample.py - main:14 -> END ---> func: roop
+2022-12-19 21:44:52.689 [INFO]	sample.py - main:17 -> main: END(process time :   0)
+
+------------ START LOGGER [2022-12-19 21:45:02] ------------
+2022-12-19 21:45:02.040 [INFO]	sample.py - main:17 -> main: START
+2022-12-19 21:45:02.040 [INFO]	sample.py - roop:13 -> roop: START
+
+------------ START LOGGER [2022-12-19 21:45:09] ------------
+2022-12-19 21:45:09.188 [INFO]	sample.py - main:17 -> main: START
+2022-12-19 21:45:09.188 [INFO]	sample.py - roop:13 -> roop: START
+2022-12-19 21:45:09.188 [INFO]	sample.py - roop:13 -> roop: END(process time :   0)
+2022-12-19 21:45:09.188 [WARNING]	sample.py - main:14 -> END ---> func: roop
+2022-12-19 21:45:09.188 [INFO]	sample.py - main:17 -> main: END(process time :   0)
+
+------------ START LOGGER [2022-12-19 21:45:19] ------------
+2022-12-19 21:45:19.304 [INFO]	sample.py - main:17 -> main: START
+2022-12-19 21:45:19.304 [INFO]	sample.py - roop:13 -> roop: START
+2022-12-19 21:45:19.305 [INFO]	sample.py - roop:13 -> roop: END(process time :   0)
+2022-12-19 21:45:19.305 [WARNING]	sample.py - main:14 -> END ---> func: roop
+2022-12-19 21:45:19.305 [INFO]	sample.py - main:17 -> main: END(process time :   0)
+
+------------ START LOGGER [2022-12-19 21:45:25] ------------
+2022-12-19 21:45:25.811 [INFO]	sample.py - main:17 -> main: START
+2022-12-19 21:45:25.811 [INFO]	sample.py - roop:13 -> roop: START
+2022-12-19 21:45:25.837 [INFO]	sample.py - roop:13 -> roop: END(process time :   0)
+2022-12-19 21:45:25.837 [WARNING]	sample.py - main:14 -> END ---> func: roop
+2022-12-19 21:45:25.837 [INFO]	sample.py - main:17 -> main: END(process time :   0)
+
+------------ START LOGGER [2022-12-19 21:45:39] ------------
+2022-12-19 21:45:39.661 [INFO]	sample.py - main:17 -> main: START
+2022-12-19 21:45:39.661 [INFO]	sample.py - roop:13 -> roop: START
+
+------------ START LOGGER [2022-12-19 21:45:49] ------------
+2022-12-19 21:45:49.959 [INFO]	sample.py - main:17 -> main: START
+2022-12-19 21:45:49.959 [INFO]	sample.py - roop:13 -> roop: START
+2022-12-19 21:45:51.577 [INFO]	sample.py - roop:13 -> roop: END(process time :   0)
+2022-12-19 21:45:51.577 [WARNING]	sample.py - main:14 -> END ---> func: roop
+2022-12-19 21:45:51.577 [INFO]	sample.py - main:17 -> main: END(process time :   0)
+
+------------ START LOGGER [2022-12-19 21:46:06] ------------
+2022-12-19 21:46:06.856 [INFO]	sample.py - main:18 -> main: START
+2022-12-19 21:46:06.856 [INFO]	sample.py - roop:14 -> roop: START
+
+------------ START LOGGER [2022-12-19 21:46:27] ------------
+2022-12-19 21:46:27.448 [INFO]	sample.py - main:17 -> main: START
+2022-12-19 21:46:27.449 [INFO]	sample.py - roop:13 -> roop: START
+2022-12-19 21:46:27.451 [INFO]	sample.py - roop:13 -> roop: END(process time : 0.002268)
+2022-12-19 21:46:27.451 [WARNING]	sample.py - main:14 -> END ---> func: roop
+2022-12-19 21:46:27.451 [INFO]	sample.py - main:17 -> main: END(process time : 0.002645)
+
+------------ START LOGGER [2022-12-19 21:46:35] ------------
+2022-12-19 21:46:35.274 [INFO]	sample.py - main:17 -> main: START
+2022-12-19 21:46:35.275 [INFO]	sample.py - roop:13 -> roop: START
+2022-12-19 21:46:35.297 [INFO]	sample.py - roop:13 -> roop: END(process time : 0.021844)
+2022-12-19 21:46:35.297 [WARNING]	sample.py - main:14 -> END ---> func: roop
+2022-12-19 21:46:35.297 [INFO]	sample.py - main:17 -> main: END(process time : 0.022499)
+
+------------ START LOGGER [2022-12-19 21:46:39] ------------
+2022-12-19 21:46:39.857 [INFO]	sample.py - main:17 -> main: START
+2022-12-19 21:46:39.857 [INFO]	sample.py - roop:13 -> roop: START
+2022-12-19 21:46:40.070 [INFO]	sample.py - roop:13 -> roop: END(process time : 0.210586)
+2022-12-19 21:46:40.070 [WARNING]	sample.py - main:14 -> END ---> func: roop
+2022-12-19 21:46:40.070 [INFO]	sample.py - main:17 -> main: END(process time : 0.211286)
