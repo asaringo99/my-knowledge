@@ -1,7 +1,7 @@
 # Sample code of Logger
 
 ## 利用したデザインパターン
-- Singleton pattern
+- Singleton pattern  
 log start を一度のみ呼び出すためにsingletonを採用しています。
 
 ## decoratorの利用
