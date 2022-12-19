@@ -1,3 +1,7 @@
+""" Singletonパターンの実装
+
+"""
+
 class Singleton(object):
     def __new__(cls, *args, **kargs):
         if not hasattr(cls, "singleton"):
