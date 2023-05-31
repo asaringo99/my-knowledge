@@ -9,3 +9,7 @@
 ## react
 
 [Bad Practice について](https://tech.locaop.jp/entry/2023/03/23/120623)
+
+## react & typescript
+
+[estie デザイナーが抱くReact+TypeScriptの疑問を紐解き、フロントエンドに一歩近づけよう](https://www.estie.jp/blog/entry/2023/04/10/123339)
