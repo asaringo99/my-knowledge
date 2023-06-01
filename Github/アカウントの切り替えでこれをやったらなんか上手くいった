@@ -2,3 +2,8 @@
 ```
 git remote set-url origin git@<ssh configに登録されてるhost名>:<account>/<repo>.git
 ```
+
+## cloneの時
+```
+git clone <sshconfigで登録してるhost名>:asaringo99/repo.git
+```
