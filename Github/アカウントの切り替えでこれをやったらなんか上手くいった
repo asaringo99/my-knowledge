@@ -1,3 +1,4 @@
+## アカウントが切り替わってない時
 以下をすると切り替えができるようになった
 ```
 git remote set-url origin git@<ssh configに登録されてるhost名>:<account>/<repo>.git
