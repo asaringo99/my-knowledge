@@ -3,6 +3,10 @@
 ```
 git remote set-url origin git@<ssh configに登録されてるhost名>:<account>/<repo>.git
 ```
+例
+```
+git remote set-url origin git@github-asaringo:asaringo99/task-management-api.git
+```
 
 ## cloneの時
 ```
