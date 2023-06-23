@@ -7,8 +7,10 @@ git remote set-url origin git@<ssh configに登録されてるhost名>:<account>
 ```
 git remote set-url origin git@github-asaringo:asaringo99/task-management-api.git
 ```
-
 ## cloneの時
 ```
-git clone <sshconfigで登録してるhost名>:asaringo99/repo.git
+git clone git@<sshconfigで登録してるhost名>:asaringo99/repo.git
 ```
+
+↑
+全てsshによる通信を想定
