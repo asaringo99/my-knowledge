@@ -18,3 +18,4 @@
 
 ## next
 [NextAuth(App Router)の実装](https://codevoweb.com/setup-and-use-nextauth-in-nextjs-13-app-directory/)
+[NextAuth Login SignUp Pages(App Router)の実装](https://codevoweb.com/nextjs-use-custom-login-and-signup-pages-for-nextauth-js/)
