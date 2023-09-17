@@ -15,3 +15,6 @@
 ## react & typescript
 
 [estie デザイナーが抱くReact+TypeScriptの疑問を紐解き、フロントエンドに一歩近づけよう](https://www.estie.jp/blog/entry/2023/04/10/123339)
+
+## next
+[NextAuth(App Router)の実装](https://codevoweb.com/setup-and-use-nextauth-in-nextjs-13-app-directory/)
