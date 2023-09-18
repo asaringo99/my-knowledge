@@ -16,6 +16,11 @@
 
 [estie デザイナーが抱くReact+TypeScriptの疑問を紐解き、フロントエンドに一歩近づけよう](https://www.estie.jp/blog/entry/2023/04/10/123339)
 
-## next
+## NextAuth
 [NextAuth(App Router)の実装](https://codevoweb.com/setup-and-use-nextauth-in-nextjs-13-app-directory/)
 [NextAuth Login SignUp Pages(App Router)の実装](https://codevoweb.com/nextjs-use-custom-login-and-signup-pages-for-nextauth-js/)
+
+## Prisma
+[prisma db pushについて](https://www.prisma.io/docs/guides/migrate/prototyping-schema-db-push?query=delete%20mig&page=1)
+[prisma generateについて](https://www.prisma.io/docs/concepts/components/prisma-client/working-with-prismaclient/generating-prisma-client)
+[prisma seedについて](https://www.prisma.io/docs/guides/migrate/seed-database)
