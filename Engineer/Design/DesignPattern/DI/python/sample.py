@@ -43,33 +43,34 @@ class Binom(ProbabilityDistribution):
     self.__p = val
 
   def configure(self, n: int, p: float):
+    self.__checkInvalidValue(n, p)
     self.n = n
     self.p = p
   
   def calculateExpectedValue(self) -> float:
+    assert self.n is not None and self.p is not None
     n = self.n
     p = self.p
-    if not n or not p:
-      return 0
     return n * p
 
   def calculateVariance(self) -> float:
+    assert self.n is not None and self.p is not None
     n = self.n
     p = self.p
-    if not n or not p:
-      return 0
     return n * p * (1 - p)
 
   def calculateProbability(self, x: int) -> float:
+    assert self.n is not None and self.p is not None
+    if self.n < x:
+        raise ValueError("Invalid Value 'N < X'")
     n = self.n
     p = self.p
-    if not n or not p:
-      return 0
     self.__createTable(n, p)
     return self.table[n][x]
 
   def __createTable(self, n: int, p: float, cache=True):
-    if cache and self.table and self.n and self.p and self.n > n and self.p == p:
+    assert self.n is not None and self.p is not None
+    if cache and self.n > n and self.p == p:
       return
     table = [[0.0]*(n+1) for _ in range(n+1)]
     table[0][0] = 1.0
@@ -78,6 +79,12 @@ class Binom(ProbabilityDistribution):
         table[i+1][j] += table[i][j] * (1 - p)
         table[i+1][j+1] += table[i][j] * p
     self.table = table
+
+  def __checkInvalidValue(self, n, p):
+    if n < 0:
+        raise ValueError("'N' should be non-negative")
+    if p < 0 or p > 1:
+        raise ValueError("'P' should be 0 <= p <= 1")
 
 class AppModule(Module):
   @classmethod
@@ -96,20 +103,20 @@ class Client():
   def __init__(self, distribution: ProbabilityDistribution) -> None:
     self.distribution = distribution
 
-  def solve(self, round: int, x: int, *args, **kwargs):
+  def solve(self, d: int, x: int, *args, **kwargs):
     self.distribution.configure(*args, **kwargs)
-    return self.__round(self.distribution.calculateProbability(x), round)
+    return self.__round(self.distribution.calculateProbability(x), d)
 
   def __round(self, value: float, digit: int = 4):
     return round(value, digit)
 
-def main(n: int, p: float, x: int, round: int):
+def main(n: int, p: float, x: int, d: int):
   dicontainer = DIContainer(AppModule)
   distribution = dicontainer.get(Binom)
   client = Client(distribution)
 
-  ans = client.solve(n=n, p=p, x=x, round=round)
+  ans = client.solve(n=n, p=p, x=x, d=d)
   print(ans)
 
 if __name__ == "__main__":
-  main(n=2000, p=0.5, x=1000, round=20)
+  main(n=2000, p=0.5, x=1000, d=20)
