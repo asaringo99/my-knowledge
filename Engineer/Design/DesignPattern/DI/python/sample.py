@@ -4,15 +4,19 @@ from injector import Injector, inject, Binder, Module, singleton
 class ProbabilityDistribution(ABC):
 
   @abstractmethod
-  def calculateExpectedValue(parameter) -> float:
+  def configure(self, *args, **kargs) -> None:
     pass
 
   @abstractmethod
-  def calculateVariance(parameter) -> float:
+  def calculateExpectedValue(self) -> float:
     pass
 
   @abstractmethod
-  def calculateProbability(parameter) -> float:
+  def calculateVariance(self) -> float:
+    pass
+
+  @abstractmethod
+  def calculateProbability(self, x: int) -> float:
     pass
 
 class DIContainer(Module):
@@ -29,20 +33,54 @@ class DIContainer(Module):
 class Binom(ProbabilityDistribution):
 
   def __init__(self) -> None:
+    self.__n = None
+    self.__p = None
     self.table = []
+  
+  @property
+  def n(self):
+    return self.__n
+  
+  @property
+  def p(self):
+    return self.__p
 
-  def calculateExpectedValue(self, n: int, p: float) -> float:
+  @n.setter
+  def n(self, val: int):
+    self.__n = val
+  
+  @p.setter
+  def p(self, val: float):
+    self.__p = val
+
+  def configure(self, n: int, p: float):
+    self.n = n
+    self.p = p
+  
+  def calculateExpectedValue(self) -> float:
+    n = self.n
+    p = self.p
+    if not n or not p:
+      return 0
     return n * p
 
-  def calculateVariance(self, n: int, p: float) -> float:
+  def calculateVariance(self) -> float:
+    n = self.n
+    p = self.p
+    if not n or not p:
+      return 0
     return n * p * (1 - p)
 
-  def calculateProbability(self, n: int, x: int, p: float, cache=True) -> float:
-    self.__createTable(n, p, cache=cache)
+  def calculateProbability(self, x: int) -> float:
+    n = self.n
+    p = self.p
+    if not n or not p:
+      return 0
+    self.__createTable(n, p)
     return self.table[n][x]
 
   def __createTable(self, n: int, p: float, cache=True):
-    if cache and self.table:
+    if cache and self.table and self.n and self.p and self.n > n and self.p == p:
       return
     table = [[0.0]*(n+1) for _ in range(n+1)]
     table[0][0] = 1.0
@@ -57,8 +95,9 @@ class Client():
   def __init__(self, distribution: ProbabilityDistribution) -> None:
     self.distribution = distribution
 
-  def solve(self, n: int, x: int, p: float):
-    return self.__round(self.distribution.calculateProbability(n, x, p))
+  def solve(self, x: int, *args, **kwargs):
+    distribution.configure(*args, **kwargs)
+    return self.__round(self.distribution.calculateProbability(x))
 
   def __round(self, value: float, digit: int = 4):
     return round(value, digit)
@@ -67,4 +106,4 @@ dicontainer = DIContainer()
 distribution = dicontainer.get(Binom)
 client = Client(distribution)
 
-print(client.solve(5, 4, 0.5))
+print(client.solve(n=20, p=0.35, x=4))
