@@ -19,17 +19,6 @@ class ProbabilityDistribution(ABC):
   def calculateProbability(self, x: int) -> float:
     pass
 
-class DIContainer(Module):
-  def __init__(self) -> None:
-    self.injector = Injector(self.__class__.configure)
-
-  @classmethod
-  def configure(cls, binder: Binder):
-    binder.bind(ProbabilityDistribution, to=Binom, scope=singleton)
-
-  def get(self, cls):
-    return self.injector.get(cls)
-
 class Binom(ProbabilityDistribution):
 
   def __init__(self) -> None:
@@ -41,14 +30,14 @@ class Binom(ProbabilityDistribution):
   def n(self):
     return self.__n
   
+  @n.setter
+  def n(self, val: int):
+    self.__n = val
+
   @property
   def p(self):
     return self.__p
 
-  @n.setter
-  def n(self, val: int):
-    self.__n = val
-  
   @p.setter
   def p(self, val: float):
     self.__p = val
@@ -90,20 +79,37 @@ class Binom(ProbabilityDistribution):
         table[i+1][j+1] += table[i][j] * p
     self.table = table
 
+class AppModule(Module):
+  @classmethod
+  def configure(cls, binder: Binder):
+    binder.bind(ProbabilityDistribution, to=Binom, scope=singleton)
+
+class DIContainer:
+  def __init__(self, module: Module) -> None:
+    self.injector = Injector(module)
+  
+  def get(self, cls):
+    return self.injector.get(cls)
+
 class Client():
   @inject
   def __init__(self, distribution: ProbabilityDistribution) -> None:
     self.distribution = distribution
 
-  def solve(self, x: int, *args, **kwargs):
-    distribution.configure(*args, **kwargs)
-    return self.__round(self.distribution.calculateProbability(x))
+  def solve(self, round: int, x: int, *args, **kwargs):
+    self.distribution.configure(*args, **kwargs)
+    return self.__round(self.distribution.calculateProbability(x), round)
 
   def __round(self, value: float, digit: int = 4):
     return round(value, digit)
 
-dicontainer = DIContainer()
-distribution = dicontainer.get(Binom)
-client = Client(distribution)
+def main(n: int, p: float, x: int, round: int):
+  dicontainer = DIContainer(AppModule)
+  distribution = dicontainer.get(Binom)
+  client = Client(distribution)
 
-print(client.solve(n=20, p=0.35, x=4))
+  ans = client.solve(n=n, p=p, x=x, round=round)
+  print(ans)
+
+if __name__ == "__main__":
+  main(n=2000, p=0.5, x=1000, round=20)
