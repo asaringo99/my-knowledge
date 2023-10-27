@@ -43,7 +43,8 @@ class Binom(ProbabilityDistribution):
     self.__p = val
 
   def configure(self, n: int, p: float):
-    self.__checkInvalidValue(n, p)
+    self.__checkIsInvalidForN(n)
+    self.__checkIsInvalidForP(p)
     self.n = n
     self.p = p
   
@@ -61,8 +62,7 @@ class Binom(ProbabilityDistribution):
 
   def calculateProbability(self, x: int) -> float:
     assert self.n is not None and self.p is not None
-    if self.n < x:
-        raise ValueError("Invalid Value 'N < X'")
+    self.__checkInvalidValue(self.n, x)
     n = self.n
     p = self.p
     self.__createTable(n, p)
@@ -80,13 +80,17 @@ class Binom(ProbabilityDistribution):
         table[i+1][j+1] += table[i][j] * p
     self.table = table
 
-  def __checkInvalidValue(self, n, p):
+  def __checkIsInvalidForN(self, n):
     if n < 0:
         raise ValueError("'N' should be non-negative")
+  def __checkIsInvalidForP(self, p):
     if p < 0 or p > 1:
         raise ValueError("'P' should be 0 <= p <= 1")
+  def __checkInvalidValue(self, n, x):
+    if n < x:
+        raise ValueError("Invalid value N and X. they should be N > X.")
 
-class AppModule(Module):
+class BindModule(Module):
   @classmethod
   def configure(cls, binder: Binder):
     binder.bind(ProbabilityDistribution, to=Binom, scope=singleton)
@@ -111,7 +115,7 @@ class Client():
     return round(value, digit)
 
 def main(n: int, p: float, x: int, d: int):
-  dicontainer = DIContainer(AppModule)
+  dicontainer = DIContainer(BindModule)
   distribution = dicontainer.get(Binom)
   client = Client(distribution)
 
@@ -119,4 +123,4 @@ def main(n: int, p: float, x: int, d: int):
   print(ans)
 
 if __name__ == "__main__":
-  main(n=2000, p=0.5, x=1000, d=20)
+  main(n=100, p=0.35, x=35, d=20)
